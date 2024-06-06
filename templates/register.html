@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        
+        body {
+            background-color: black;
+            margin: 0; 
+            padding: 0; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        #container {
+            width: 40%; 
+            background-color: white;
+            padding: 30px; 
+            text-align: left; 
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1); 
+        }
+
+        h1 {
+            color: black;
+            text-align: center; 
+        }
+
+        
+        form {
+            margin-top: 20px; 
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px; 
+        }
+
+    
+        input {
+            width: calc(100% - 10px); 
+            padding: 8px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+        }
+
+        
+        input[type="submit"] {
+            background-color: goldenrod; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: goldenrod; 
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>User Registration</h1>
+        <form id="registrationForm" action="/" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="mobile" name="mobile" required>
+            
+            <label for="security_q1">Security Question 1:   First author you read? </label>
+            <input type="text" id="security_q1" name="security_q1" required>
+            
+            <label for="security_q2">Security Question 2:  Dream Car</label>
+            <input type="text" id="security_q2" name="security_q2" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <input type="submit" value="Register">
+        </form>
+        <div class="login-link">
+            Already have an account? <a href="/login">Login here</a>
+        </div>
+    </div>
+</body>
+</html>

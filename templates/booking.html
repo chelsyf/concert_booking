@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Concert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #111;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .details {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .details h2 {
+            color: #fff;
+        }
+
+        .details p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        label {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: rgb(236, 22, 162);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff00b3;
+        }
+
+        .image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Concert</h1>
+
+    <div class="container">
+        <div class="details">
+            <h2>{{ concert.name }}</h2>
+            <p><strong>Artist:</strong> {{ concert.artistname }}</p>
+            <p><strong>Date:</strong> {{ concert.date }}</p>
+            <p><strong>Time:</strong> {{ concert.time }}</p>
+            <p><strong>Country:</strong> {{ concert.country }}</p>
+            <p><strong>Stadium Name:</strong> {{ concert.stadium_name }}</p>
+            <p><strong>Stadium Capacity:</strong> {{ concert.stadium_capacity }}</p>
+            <p><strong>Ticket Price:</strong> ${{ concert.ticket_price }}</p>
+
+            <!-- Form to submit booking details -->
+            <form action="/book_concert/{{ concert.id }}" method="POST">
+                <label for="num_tickets">Number of Tickets:</label>
+                <input type="number" id="num_tickets" name="num_tickets" min="1" required>
+                <button type="submit">Book Tickets</button>
+            </form>
+        </div>
+
+        <!-- Image -->
+        <div class="image">
+            {% if image_data %}
+            <img src="data:image/jpeg;base64,{{ image_data }}" alt="{{ concert.name }}">
+            {% else %}
+            <p>No image available</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black; /* Changed background color to black */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #232121; /* Changed container background color to a lighter shade of black */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #fff; /* Changed text color to white */
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #fff; /* Changed text color to white */
+        }
+
+        button {
+            background-color: rgb(242, 9, 168); /* Changed button background color to magenta */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(235, 14, 176); /* Changed hover color to a lighter shade of magenta */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Booking Successful!</h2>
+        <p>You have successfully booked {{ num_tickets }} ticket(s) for {{ concert.name }}.</p>
+        <button onclick="window.location.href='/concerts'">Back to Concerts</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Change background color to black */
+            color: #fff; /* Change text color to white */
+            position: relative; /* Set body to relative position for absolute positioning */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .profile-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: rgb(214, 9, 122);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .profile-btn:hover {
+            background-color: #f10c7e; /* Lighten blue on hover */
+        }
+
+        .concert-container {
+            display: grid; /* Use grid layout */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Two columns with minimum width of 300px */
+            gap: 20px; /* Add gap between containers */
+            justify-items: center; /* Center items horizontally */
+        }
+
+        .concert {
+            height: 450px; /* Fixed height for each concert container */
+            padding: 20px;
+            background-color: #111; /* Lighten container color */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+
+        .concert img {
+            width: 100%; /* Set image width to fill container */
+            height: 70%; /* Set image height to maintain consistency */
+            border-radius: 5px;
+            margin-bottom: 10px;
+            object-fit: cover; /* Maintain aspect ratio and cover container */
+        }
+
+        .concert h2 {
+            margin-bottom: 5px;
+            color: #fff; /* Maintain text color */
+        }
+
+        .concert p {
+            margin-bottom: 5px;
+            color: #ddd; /* Lighten text color */
+        }
+
+        .concert a {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: rgb(233, 13, 149); /* Change button color to magenta */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .concert a:hover {
+            background-color: #ec0c92; /* Lighten magenta on hover */
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('profile') }}" class="profile-btn">Back to Profile</a>
+    
+    <h1>Concerts</h1>
+    <div class="concert-container">
+        {% for concert in concerts %}
+        <div class="concert">
+            <img src="data:image/jpeg;base64,{{ concert.image_data }}" alt="{{ concert.name }}">
+            <h2>{{ concert.name }}</h2>
+            <p>{{ concert.artistname }}</p>
+            <a href="{{ url_for('book_concert', concert_id=concert.id) }}">Book Now</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

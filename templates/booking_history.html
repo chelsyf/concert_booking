@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #aaa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+        }
+
+        tr:hover {
+            background-color: #444;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            background-color: #d20c7e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #c1096f;
+        }
+
+        .btn-cancel[hidden] {
+            visibility: hidden; /* Hide the cancel button */
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking History</h1>
+
+    <div class="container">
+        <table>
+            <tr>
+                <th>Booking ID</th>
+                <th>Concert Name</th>
+                <th>Number of Tickets</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for booking in booking_history %}
+            <tr>
+                <td>{{ booking.booking_id }}</td>
+                <td>{{ booking.name }}</td>
+                <td>{{ booking.num_tickets }}</td>
+                <td>{{ booking.date }}</td>
+                <td>{{ booking.time }}</td>
+                <td>{{ booking.status }}</td>
+                {% if booking.status != 'canceled' %}
+                    <td><a href="{{ url_for('cancel_booking', booking_id=booking.booking_id) }}" class="btn">Cancel</a></td>
+                {% else %}
+                    <td><a href="#" class="btn btn-cancel" hidden>Cancel</a></td> <!-- Add hidden attribute -->
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{{ url_for('concerts_page') }}" class="btn">Back to Concerts</a>
+    </div>
+</body>
+</html>

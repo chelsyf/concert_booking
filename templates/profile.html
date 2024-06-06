@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgba(34, 34, 34, 0.9); /* Greyish-black background with 90% opacity */
+            color: white; /* Text color */
+            text-align: center;
+        }
+
+        .header {
+            padding: 20px 0;
+            color: white; /* Header text color */
+        }
+
+        .logout-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white; /* Logout link text color */
+        }
+
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 60px; /* Adjust position below the header */
+            right: 20px; /* Align to the right */
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            text-decoration: none;
+            color: white; /* Button text color */
+            border: 1px solid white; /* Add border */
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Change background color on hover */
+        }
+
+        .about-text {
+            margin: 40px auto;
+            max-width: 800px; /* Adjusted width for larger text */
+            text-align: left;
+            font-size: 21px; /* Larger font size */
+            line-height: 1.5; /* Increase line height for readability */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header">Welcome to Concertify, {{ user.name }}!</h1>
+    <div class="about-text">
+        <p>Are you ready to experience the magic of live music? At Concertify, we bring you the hottest concerts and events from around the world. Whether you're into rock, pop, hip-hop, EDM, or classical, we've got something for everyone.</p>
+        <p>Browse our extensive lineup of upcoming concerts and discover your next unforgettable night out. We've curated a diverse selection of artists and venues to suit every taste and preference.</p>
+        <p>With Concertify, booking tickets is quick and easy. Simply select the event you want to attend, choose your seats, and secure your spot with just a few clicks. Our user-friendly platform makes it hassle-free to plan your night and ensure you don't miss out on your favorite acts.</p>
+        <p>Get ready to turn up the volume, feel the energy, and create memories that will last a lifetime. Let the music move you with Concertify!</p>
+    </div>
+
+    {% if user %}
+    <div>
+        <a class="logout-link" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+    {% endif %}
+
+    <div class="button-container">
+        <a href='/profile' class="button">Home</a>
+        <a href='/concerts' class="button">Book Concert</a>
+        <a href="/booking_history" class="button">Booking History</a>
+    </div>
+</body>
+</html>
